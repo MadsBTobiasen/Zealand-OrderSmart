@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using OrderSmart.Models;
+using OrderSmart.Services.OrderService;
 using OrderSmart.Services.ProductService;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace OrderSmart.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger, ProductService productService)
+        public IndexModel(ILogger<IndexModel> logger, ProductService productService, OrderService orderService)
         {
             _logger = logger;
         }

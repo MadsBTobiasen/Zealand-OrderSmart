@@ -19,6 +19,8 @@ namespace OrderSmart.Services.ProductService
             _jsonFileService = jsonFileService;
             Products = _jsonFileService.GetProducts();
 
+            Console.WriteLine("PRODUCT SERVICE CONSTRUCTOR");
+
         }
 
         #region Methods

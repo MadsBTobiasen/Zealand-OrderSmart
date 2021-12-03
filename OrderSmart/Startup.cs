@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using OrderSmart.Services.JSONService;
 using OrderSmart.Services.OrderService;
 using OrderSmart.Services.ProductService;
+using OrderSmart.Services;
 
 namespace OrderSmart
 {
@@ -27,9 +28,9 @@ namespace OrderSmart
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddTransient<JSONFileService>();
             services.AddSingleton<OrderService, OrderService>();
             services.AddSingleton<ProductService, ProductService>();
-            services.AddTransient<JSONFileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
