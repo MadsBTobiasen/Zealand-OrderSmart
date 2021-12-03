@@ -19,8 +19,6 @@ namespace OrderSmart.Services.ProductService
             _jsonFileService = jsonFileService;
             Products = _jsonFileService.GetProducts();
 
-            foreach (Product p in Products) Console.WriteLine(p);
-
         }
 
         public List<Product> GetProducts()

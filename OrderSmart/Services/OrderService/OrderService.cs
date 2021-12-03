@@ -1,4 +1,5 @@
-﻿using OrderSmart.Services.JSONService;
+﻿using OrderSmart.Models;
+using OrderSmart.Services.JSONService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,14 @@ namespace OrderSmart.Services.OrderService
     {
 
         private JSONFileService _jsonFileService { get; set; }
+        private List<Order> Orders { get; set; }
 
         public OrderService(JSONFileService jsonFileService)
         {
             _jsonFileService = jsonFileService;
+
+            Orders = _jsonFileService.GetOrders();
+
         }
 
     }

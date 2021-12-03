@@ -9,10 +9,10 @@ namespace OrderSmart.Models
     {
 
         #region Properties
-        public int ID { get; private set; }
-        public string Name { get; private set; }
-        public int Amount { get; private set; }
-        public double Price { get; private set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Amount { get; set; }
+        public double Price { get; set; }
         #endregion
 
         #region Constructor
@@ -26,7 +26,7 @@ namespace OrderSmart.Models
 
         public Product()
         {
-
+            
         }
         #endregion
 

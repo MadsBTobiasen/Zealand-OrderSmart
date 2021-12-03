@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OrderSmart.Services.JSONService
 {
-    public class JSONFileService : IJSONFileService
+    public class JSONFileService
     {
 
         #region Properties
@@ -31,9 +31,34 @@ namespace OrderSmart.Services.JSONService
 
             Orders = ReadOrders().ToList();
             Products = ReadProducts().ToList();
+
+            /*
+            SaveJSONObjects(new List<object>() {
+                new Order(1, Order.Status.Done, Products)
+            }, JSONOrderPath);
+            */
         }
 
         #region Orders Handling
+        /// <summary>
+        /// Method that takes a list of objects, and writes them to a JSON file.
+        /// </summary>
+        /// <param name="objects"></param>
+        public void SaveJSONObjects(List<object> objects, string path)
+        {
+
+            using (var jsonFileWriter = File.Create(path))
+            {
+                var jsonWriter = new Utf8JsonWriter(jsonFileWriter, new JsonWriterOptions()
+                {
+                    SkipValidation = false,
+                    Indented = true
+                });
+                JsonSerializer.Serialize<object[]>(jsonWriter, objects.ToArray());
+            }
+
+        }
+
         /// <summary>
         /// Method that reads Orders from the JSON file, defined in the path-properties above,
         /// and returns the read data, to be parsed into the list.
@@ -42,7 +67,7 @@ namespace OrderSmart.Services.JSONService
         private IEnumerable<Order> ReadOrders()
         {
 
-            using (var jsonFileReader = File.OpenText(JSONProductPath))
+            using (var jsonFileReader = File.OpenText(JSONOrderPath))
             {
                 return JsonSerializer.Deserialize<Order[]>(jsonFileReader.ReadToEnd());
             }
