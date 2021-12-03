@@ -15,9 +15,34 @@ namespace OrderSmart.Services.OrderService
 
         public OrderService(JSONFileService jsonFileService)
         {
-            _jsonFileService = jsonFileService;
 
+            _jsonFileService = jsonFileService;
             Orders = _jsonFileService.GetOrders();
+
+        }
+
+
+        public void AddOrder(Order order)
+        {
+            Orders.Add(order);
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            return Orders;
+        }
+
+        public void UpdateOrder(Order.Status status, Order order)
+        {
+        
+
+
+        }
+
+        public void DeleteOrder(Order order)
+        {
+
+            
 
         }
 

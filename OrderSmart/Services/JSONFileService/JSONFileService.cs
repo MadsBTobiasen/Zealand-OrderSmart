@@ -32,6 +32,11 @@ namespace OrderSmart.Services.JSONService
             Orders = ReadOrders().ToList();
             Products = ReadProducts().ToList();
 
+            foreach(Order o in Orders)
+            {
+                Console.WriteLine(o);
+            }
+
             /*
             SaveJSONObjects(new List<object>() {
                 new Order(1, Order.Status.Done, Products)

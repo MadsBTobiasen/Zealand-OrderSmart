@@ -45,7 +45,7 @@ namespace OrderSmart.Models
 
             double price = 0.00;
 
-            foreach(Product p in Products)
+            foreach (Product p in Products)
             {
                 price += p.Price;
             }
