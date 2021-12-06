@@ -18,6 +18,10 @@ namespace OrderSmart.Models
         }
         #endregion
 
+        #region
+        private static int IDCounter { get; set; }
+        #endregion
+
         #region Properties
         public int ID { get; set; }
         public Status OrderStatus { get; set; }
@@ -26,15 +30,22 @@ namespace OrderSmart.Models
         #endregion
 
         #region Constructors
-        public Order(int id, Status orderStatus, List<Product> products)
+        public Order(Status orderStatus, List<Product> products)
         {
-            ID = id;
+            
+            ID = IDCounter;
             OrderStatus = orderStatus;
             Products = products;
+
+            IDCounter++;
+
         }
 
         public Order()
         {
+
+            ID = IDCounter;
+            IDCounter++;
 
         }
         #endregion

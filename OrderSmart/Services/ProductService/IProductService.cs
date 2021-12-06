@@ -12,7 +12,7 @@ namespace OrderSmart.Services.ProductService
         public List<Product> GetAllProducts();
         public Product GetProductByID(int productId);
         public List<Product> GetProductsBySearch(string sName, double sMinPrice, double sMaxPrice);
-        public Product UpdateStock(int productId, int amount);
+        public Product UpdateStock(Product product, int amount);
 
     }
 }

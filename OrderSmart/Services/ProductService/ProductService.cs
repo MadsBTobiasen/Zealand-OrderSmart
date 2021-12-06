@@ -93,24 +93,28 @@ namespace OrderSmart.Services.ProductService
 
         }
         /// <summary>
-        /// ?
+        /// Method that finds a matching object in Products, with the given parameter product.
+        /// When a match is found, the stock of the product in Products, get updated accordingly.
         /// </summary>
-        /// <param name="productId">Id of the product to find.</param>
+        /// <param name="product">Product object to be added to the cart.</param>
         /// <param name="amount">Amount to add to order, and amount to decrease from stock.</param>
         /// <returns>The product object, to be added to an order.</returns>
-        public Product UpdateStock(int productId, int amount)
+        public Product UpdateStock(Product product, int amount)
         {
 
-            foreach (Product product in Products)
+            foreach (Product stock in Products)
             {
 
-                if (product.ID == productId)
+                if (product.ID == stock.ID)
                 {
 
-                    product.Amount -= amount;
-                    return new Product(productId, product.Name, amount, product.Price);
+                    Console.WriteLine(stock);
+                    stock.Amount -= amount;
+                    Console.WriteLine(stock);
+                    return product;
 
                 }
+
             }
 
             return null;

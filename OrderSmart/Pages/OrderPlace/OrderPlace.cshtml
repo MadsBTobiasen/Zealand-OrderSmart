@@ -1,0 +1,44 @@
+﻿@page
+@model OrderSmart.Pages.OrderPlace.OrderPlace
+@using Models;
+@{
+}
+
+
+<body>
+
+    <div class="table">
+
+        <div class="">
+
+            <form method="post" class="">
+
+                @for (int i = 0; i < Model.Stock.Count; i++)
+                {
+                <div class="form-group form-row">
+
+                    <input asp-for="@Model.Cart[i].ID" value="@Model.Stock[i].ID" readonly="@true" />
+
+                    <input asp-for="@Model.Cart[i].Name" value="@Model.Stock[i].Name" readonly="@true" />
+
+                    <input asp-for="@Model.Cart[i].Price" value="@Model.Stock[i].Price" readonly="@true" />
+
+                    <p class="form-text">@Model.Stock[i].Amount</p>
+                    <p class="btn-dark" onclick="incrementAmount(@Model.Stock[i].Amount, @i)">+</p>
+                    <p class="btn-dark" onclick="decrementAmount(0, @i)">-</p>
+
+                    <input asp-for="@Model.Cart[i].Amount" value="0" id="new_amount_div_@i" onchange="checkMax(@Model.Stock[i].Amount, @i)"/>
+                    <!-- VALIDAATION DONE CLIENT SIDE WITH JAVASCRIPT -->
+
+                </div>
+                }
+
+                <input type="submit" value="submit" name="submit" />
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
