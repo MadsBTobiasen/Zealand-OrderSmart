@@ -1,0 +1,17 @@
+﻿body {
+}
+
+table, th, td, tr {
+    border: 0px solid black;
+    margin: 0px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+
+.btn-primary {
+    background-color: white !important;
+    border: black !important;
+    font-size: 30px !important;
+}body {
+}
