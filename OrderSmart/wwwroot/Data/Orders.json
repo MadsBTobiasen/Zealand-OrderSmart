@@ -1,5 +1,6 @@
 [
   {
+    "ID": 0,
     "OrderStatus": 0,
     "Price": 21.990000000000002,
     "Products": [
@@ -32,6 +33,40 @@
     ]
   },
   {
+    "ID": 0,
+    "OrderStatus": 0,
+    "Price": 21.990000000000002,
+    "Products": [
+      {
+        "Name": "kort_1",
+        "Amount": 2,
+        "Price": 10
+      },
+      {
+        "Name": "kort_2",
+        "Amount": 19,
+        "Price": 0.8
+      },
+      {
+        "Name": "kort_3",
+        "Amount": 1,
+        "Price": 1.3
+      },
+      {
+        "ID": 4,
+        "Name": "kort_4",
+        "Amount": 3,
+        "Price": 5.69
+      },
+      {
+        "Name": "kort_5",
+        "Amount": 9,
+        "Price": 4.2
+      }
+    ]
+  },
+  {
+    "ID": 1,
     "OrderStatus": 1,
     "Price": 21.990000000000002,
     "Products": [
@@ -68,6 +103,7 @@
     ]
   },
   {
+    "ID": 2,
     "OrderStatus": 2,
     "Price": 21.990000000000002,
     "Products": [
@@ -104,6 +140,7 @@
     ]
   },
   {
+    "ID": 3,
     "OrderStatus": 3,
     "Price": 21.990000000000002,
     "Products": [
