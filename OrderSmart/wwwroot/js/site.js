@@ -57,10 +57,9 @@ function getDiv(idDiv) {
 
 //Af Mads
 //Method to hide the given div. Usally the navbar.
-function toggleNavbar(classDiv, classBttn) {
+function toggleNavbar(classDiv) {
 
     document.getElementsByClassName(classDiv)[0].classList.toggle("hide");
-    document.getElementsByClassName(classBttn)[0];
 
 }
 
