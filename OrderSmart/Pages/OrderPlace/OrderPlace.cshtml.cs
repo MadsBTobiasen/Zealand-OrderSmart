@@ -8,7 +8,9 @@ using OrderSmart.Models;
 using OrderSmart.Services.OrderService;
 using OrderSmart.Services.ProductService;
 using System.ComponentModel.DataAnnotations;
-
+/*
+ * Af Falke & Mads
+*/
 namespace OrderSmart.Pages.OrderPlace
 {
     public class OrderPlace : PageModel
@@ -27,7 +29,9 @@ namespace OrderSmart.Pages.OrderPlace
         /// <summary>
         /// Constructor for the class. Note: if statement to the initialization of Stock is necessary to stop resetting search filtered products when you add to cart
         /// </summary>
-        // Mads
+        #region Constructor
+
+        #region Mads
         public OrderPlace(OrderService orderService, ProductService productService)
         {
 
@@ -42,19 +46,25 @@ namespace OrderSmart.Pages.OrderPlace
             }
 
         }
+        #endregion
+
+        #endregion
 
         #region Methods
+
+        #region Mads
         /// <summary>
         /// OnGet() gets called when the user loads the page.
         /// </summary>
-        // Mads
         public IActionResult OnGet()
         {
 
             return Page();
 
         }
+        #endregion
 
+        #region Falke
         /// <summary>
         /// Creates Cart if none exist. Uses parameters to add a refrence-less product to cart
         /// or updates the amount property of the appropriate product in the cart if a product with a matching
@@ -67,7 +77,6 @@ namespace OrderSmart.Pages.OrderPlace
         /// <param name="amount"></param>
         /// <param name="price"></param>
         /// <returns></returns>
-        // Falke
         public IActionResult OnPostToCart(int id, string name, int amount, double price)
         {
             if (Cart == null)
@@ -114,7 +123,6 @@ namespace OrderSmart.Pages.OrderPlace
         /// <param name="id"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        // Falke
         public IActionResult OnPostRemoveFromCart(int id, int amount)
         {
             foreach(Product p in Cart.ToList())
@@ -130,10 +138,21 @@ namespace OrderSmart.Pages.OrderPlace
         }
 
         /// <summary>
+        /// OnPostSearch() gets called when the user, hits the "search" button, uses a service to return specific products matching search criteria.
+        /// Note: min- and maxPrice originate from strings in order to be able to see the placeholder text in the searchbar.
+        /// </summary>
+        public IActionResult OnPostSearch()
+        {
+            Stock = _productService.GetProductsBySearch(SearchName, Convert.ToDouble(SearchMinPrice), Convert.ToDouble(SearchMaxPrice));
+            return Page();
+        }
+        #endregion
+
+        #region Falke & Mads
+        /// <summary>
         /// OnPostBuy() gets called when the button "køb" is pressed, uses cart to create new order object and adds it to list of orders.
         /// Also updates the stock to represent the sale of products and clears the cart and total price of cart so they're ready and reset for the next order.
         /// </summary>
-        // Falke and Mads
         public IActionResult OnPostBuy()
         {
             //Mads
@@ -157,22 +176,12 @@ namespace OrderSmart.Pages.OrderPlace
 
         }
 
-        /// <summary>
-        /// OnPostSearch() gets called when the user, hits the "search" button, uses a service to return specific products matching search criteria.
-        /// Note: min- and maxPrice originate from strings in order to be able to see the placeholder text in the searchbar.
-        /// </summary>
-        // Falke
-        public IActionResult OnPostSearch()
-        {
-            Stock = _productService.GetProductsBySearch(SearchName, Convert.ToDouble(SearchMinPrice), Convert.ToDouble(SearchMaxPrice));
-            return Page();
-        }
-
-        //Mads
         public override string ToString()
         {
             return base.ToString();
         }
+        #endregion
+
         #endregion
 
     }

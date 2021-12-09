@@ -5,6 +5,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
+/*
+* 
+* Af Mads
+*
+*/
+
 namespace OrderSmart.Models
 {
     public class Product
