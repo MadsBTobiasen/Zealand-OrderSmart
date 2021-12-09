@@ -1,13 +1,21 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+
+/*
+* 
+* Af Mads
+*
+*/
 
 namespace OrderSmart.Models
 {
     public class Product
     {
-
+        
         #region Properties
         public int ID { get; set; }
         public string Name { get; set; }
@@ -26,7 +34,7 @@ namespace OrderSmart.Models
 
         public Product()
         {
-            
+
         }
         #endregion
 
