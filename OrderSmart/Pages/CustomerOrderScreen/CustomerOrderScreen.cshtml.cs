@@ -3,6 +3,12 @@ using OrderSmart.Models;
 using OrderSmart.Services.OrderService;
 using System.Collections.Generic;
 
+/*
+*
+* Af Martin
+*
+*/
+
 namespace OrderSmart.Pages.CustomerOrderScreen
 {
     public class CustomerOrderScreenModel : PageModel
@@ -18,7 +24,6 @@ namespace OrderSmart.Pages.CustomerOrderScreen
 
         /// <summary>
         /// Gets all orders from the list Orders
-        /// Martin
         /// </summary>
         public void OnGet()
         {

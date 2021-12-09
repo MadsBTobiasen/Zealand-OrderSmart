@@ -1,0 +1,72 @@
+﻿@page "/orders/{id:int}"
+@model OrderSmart.Pages.Orders.OrderDetailsModel
+@{
+
+    /*
+    *
+    * Af Rasmus
+    *
+    */
+
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex">
+                <span>Viewing Order # @Model.SelectedOrder.ID</span>
+                <a class="btn btn-sm btn-primary ml-auto" asp-page="Orders">&laquo; Back to orders</a>
+            </div>
+            <div class="card-body">
+                <div class="col-12">
+                    <form asp-page="ManageOrder" method="post">
+                        <div class="form-group">
+                            <label asp-for="SelectedOrder.Price">ID</label>
+                            <input class="form-control" readonly="@true" asp-for="SelectedOrder.ID" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="SelectedOrder.Price">Price</label>
+                            <input class="form-control" readonly="@true" asp-for="SelectedOrder.Price" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="SelectedOrder.Price">Status</label>
+                            <select class="form-control" asp-for="SelectedStatus" asp-items="Model.OrderStatusItems"></select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+
+                        <div class="col-12">
+                            <h3>Products</h3>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product ID</th>
+                                        <th>Name</th>
+                                        <th>Price per unit</th>
+                                        <th>Amount</th>
+                                        <th>Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var product in Model.SelectedOrder.Products)
+                                {
+                                    <tr>
+                                        <td>@product.ID</td>
+                                        <td>@product.Name</td>
+                                        <td>@product.Price.ToString("C")</td>
+                                        <td>@product.Amount</td>
+                                        <td>@((product.Price * product.Amount).ToString("C"))</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

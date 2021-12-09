@@ -9,17 +9,9 @@
     <title>@ViewData["Title"] - OrderSmart</title>
     <link rel="stylesheet" href="~/css/CustomerOrderScreen.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <script>
-        /* JavaScript that updates the site automatically every 15 seconds.*/
-        /*Martin*/
-        function timedRefresh(timeoutPeriod) {
-            setTimeout("location.reload(true);", timeoutPeriod);
-        }
-        window.onload = timedRefresh(15000);
-    </script>
 </head>
 
-<body>
+<body onload="timedRefresh(15000)">
     @* Makes a borderless table and tableheaders for each orderstatus.*@
     @* Martin *@
     <form method="get">

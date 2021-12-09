@@ -16,6 +16,7 @@ namespace OrderSmart.Services.OrderService
     {
         void AddOrder(Order order);
         List<Order> GetAllOrders();
+        Order GetOrderByID(int id);
         void UpdateOrder(Order.Status status, Order order);
         void DeleteOrder(Order order);
 

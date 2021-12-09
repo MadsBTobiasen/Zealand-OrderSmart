@@ -1,0 +1,61 @@
+﻿@page
+@using OrderSmart.Models
+@model OrderSmart.Pages.Orders.PackingModel
+@{
+    ViewData["title"] = "View Orders";
+}
+// Rasmus // 
+<div class="row">
+    <div class="col-3">
+        <div class="card">
+            <div class="card-header">@Order.Status.Recieved.ToString()</div>
+            <div class="card-body">
+                @foreach (var order in Model.GetOrdersByStatus(Order.Status.Recieved))
+                {
+                    <div class="col-12 py-1">
+                        <a class="btn btn-primary" asp-page="/OrderDetails/OrderDetails" asp-route-id="@order.ID">Order #@order.ID.ToString("D5")</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-header">@Order.Status.InProgress.ToString()</div>
+            <div class="card-body">
+                @foreach (var order in Model.GetOrdersByStatus(Order.Status.InProgress))
+                {
+                    <div class="col-12 py-1">
+                        <a class="btn btn-primary" asp-page="/OrderDetails/OrderDetails" asp-route-id="@order.ID">Order #@order.ID.ToString("D5")</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-header">@Order.Status.Done.ToString()</div>
+            <div class="card-body">
+                @foreach (var order in Model.GetOrdersByStatus(Order.Status.Done))
+                {
+                    <div class="col-12 py-1">
+                        <a class="btn btn-primary" asp-page="/OrderDetails/OrderDetails" asp-route-id="@order.ID">Order #@order.ID.ToString("D5")</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-header">@Order.Status.Delivered.ToString()</div>
+            <div class="card-body">
+                @foreach (var order in Model.GetOrdersByStatus(Order.Status.Delivered))
+                {
+                    <div class="col-12 py-1">
+                        <a class="btn btn-primary" asp-page="/OrderDetails/OrderDetails" asp-route-id="@order.ID">Order #@order.ID.ToString("D5")</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

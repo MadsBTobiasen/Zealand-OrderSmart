@@ -36,9 +36,31 @@ namespace OrderSmart.Services.OrderService
             Orders.Add(order);
         }
 
+
+        /// <summary>
+        /// Method that returns all objects of type Order from the Orders-list.
+        /// </summary>
+        /// <returns>List of Orders</returns>
         public List<Order> GetAllOrders()
         {
             return Orders;
+        }
+
+        /// <summary>
+        /// Method that takes a given id, and tries to match to an existing order in the orders list.
+        /// </summary>
+        /// <param name="id">Integer value of the order to find.</param>
+        /// <returns>Order object, or null if none found.</returns>
+        public Order GetOrderByID(int id)
+        {
+
+            foreach(Order o in Orders)
+            {
+                if (o.ID == id) return o;
+            }
+
+            return null;
+
         }
 
         /// <summary>
