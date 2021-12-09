@@ -76,7 +76,7 @@ namespace OrderSmart.Services.ProductService
 
             foreach (Product product in Products)
             {
-                if (product.Name.Contains(sName) && product.Price >= sMinPrice && (product.Price <= sMaxPrice || sMaxPrice == 0.00))
+                if (product.Name.ToLower().Contains(sName.ToLower()) && product.Price >= sMinPrice && (product.Price <= sMaxPrice || sMaxPrice == 0.00))
                 {
                     sortedProducts.Add(product);
                 }

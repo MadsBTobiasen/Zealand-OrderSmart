@@ -71,7 +71,7 @@ body {
 }
 
 /*
-    OrderSmart specific css
+    OrderSmart specific css af Mads
 */
 
 .hide {
@@ -91,4 +91,55 @@ body {
     right: 0;
     top: 0;
     z-index: 9;
+}
+
+.input-margin {
+    margin-left: 5px;
+}
+
+.btn-left {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.btn-right {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.btn-alone {
+    border-radius: 5px;
+}
+
+.search-container {
+    margin: 0;
+    border: 1px solid rgba(0,0,0,.1);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(0,0,0,.05);
+}
+
+.search-container span {
+    margin-left: 5px;
+}
+
+.input-group {
+    padding-top: 10px;
+}
+
+button {
+    text-align: center;
+    align-content:center;
+}
+
+.totalprice-container {
+    float:right;
+}
+
+.fa-bars {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    top: -0.15rem;
+    bottom: 0;
 }

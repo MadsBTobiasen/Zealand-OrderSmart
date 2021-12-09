@@ -161,17 +161,22 @@ namespace OrderSmart.Pages.OrderPlace
                 return Page();
             }
 
-            if (Cart.Count > 0)
+            if (Cart != null)
             {
-                Order = new Order(Order.Status.Recieved, Cart.ToList()); //Forslag: Ændre order parameter så den kun tager en liste af produkter og status bliver sat i body til recieved
-                Order.GetID(_orderService);
-                _orderService.AddOrder(Order);
-            }
-            //Falke
-            _productService.UpdateStock(Cart);
+                if (Cart.Count > 0)
+                {
+                    Order = new Order(Order.Status.Recieved, Cart.ToList()); //Forslag: Ændre order parameter så den kun tager en liste af produkter og status bliver sat i body til recieved
+                    Order.GetID(_orderService);
+                    _orderService.AddOrder(Order);
+                }
+                //Falke
+                _productService.UpdateStock(Cart);
 
-            Cart.Clear();
-            TotalPriceCart = 0;
+                Cart.Clear();
+                TotalPriceCart = 0;
+
+                return Redirect("/Packing/Packing");
+            }
 
             return Page();
 

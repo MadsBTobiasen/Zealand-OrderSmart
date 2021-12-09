@@ -57,7 +57,7 @@ namespace OrderSmart.Models
 
             foreach (Product p in Products)
             {
-                price += p.Price;
+                price += (p.Price * p.Amount);
             }
 
             return price;
