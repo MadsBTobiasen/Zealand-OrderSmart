@@ -1,6 +1,8 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
+const { hide } = require("@popperjs/core");
+
 // Write your JavaScript code.
 
 //Af Mads
@@ -50,6 +52,15 @@ function getDiv(idDiv) {
 
     var selector = "new_amount_div_" + idDiv;
     return document.getElementById(selector);
+
+}
+
+//Af Mads
+//Method to hide the given div. Usally the navbar.
+function toggleNavbar(classDiv, classBttn) {
+
+    document.getElementsByClassName(classDiv)[0].classList.toggle("hide");
+    document.getElementsByClassName(classBttn)[0];
 
 }
 

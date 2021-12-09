@@ -73,3 +73,22 @@ body {
 /*
     OrderSmart specific css
 */
+
+.hide {
+    display: none;
+}
+
+.navbar_container {
+    transition-delay: 1s;
+}
+
+.navbar_toggle_bttn {
+    position: absolute !important;
+    width: 25px;
+    height: 25px;
+    float: right;
+    margin: 5px;
+    right: 0;
+    top: 0;
+    z-index: 9;
+}

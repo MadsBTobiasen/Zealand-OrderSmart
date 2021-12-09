@@ -1,0 +1,15 @@
+[
+  {
+    "ID": 6,
+    "OrderStatus": 0,
+    "Price": 4.2,
+    "Products": [
+      {
+        "ID": 5,
+        "Name": "kort_5",
+        "Amount": 9,
+        "Price": 4.2
+      }
+    ]
+  }
+]

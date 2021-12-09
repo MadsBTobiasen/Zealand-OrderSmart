@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrderSmart.Services.OrderService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,10 +25,6 @@ namespace OrderSmart.Models
         }
         #endregion
 
-        #region
-        private static int IDCounter { get; set; }
-        #endregion
-
         #region Properties
         public int ID { get; set; }
         public Status OrderStatus { get; set; }
@@ -38,25 +35,21 @@ namespace OrderSmart.Models
         #region Constructors
         public Order(Status orderStatus, List<Product> products) //Forslag: Ændre order parameter så den kun tager en liste af produkter og status bliver sat i body til recieved
         {
-            
-            ID = IDCounter;
+
+            ID = 0;
             OrderStatus = orderStatus;
             Products = products;
 
-            IDCounter++;
-
         }
 
-        public Order()
-        {
-
-            ID = IDCounter;
-            IDCounter++;
-
-        }
+        public Order() { }
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Method that itterates through all the products in Order, and returns the total price.
+        /// </summary>
+        /// <returns></returns>
         private double CalculatePrice()
         {
 
@@ -69,6 +62,15 @@ namespace OrderSmart.Models
 
             return price;
 
+        }
+
+        /// <summary>
+        /// Method that gets a unique ID for the order.
+        /// </summary>
+        /// <param name="orderService"></param>
+        public void GetID(OrderService orderService)
+        {
+            ID = orderService.GenerateID();  
         }
 
         public override string ToString()

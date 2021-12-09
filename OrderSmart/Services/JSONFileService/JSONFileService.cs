@@ -33,7 +33,7 @@ namespace OrderSmart.Services.JSONService
 
             JSONBasePath = Path.Combine(webHostEnvironment.WebRootPath, "Data");
             JSONProductPath = Path.Combine(JSONBasePath, "Products.json");
-            JSONOrderPath = Path.Combine(JSONBasePath, "Orders.json");
+            JSONOrderPath = Path.Combine(JSONBasePath, "Orders");
 
             Orders = ReadOrders().ToList();
             Products = ReadProducts().ToList();
@@ -42,21 +42,23 @@ namespace OrderSmart.Services.JSONService
             {
                 Console.WriteLine(o);
             }
-
-            /*
-            SaveJSONObjects(new List<object>() {
-                new Order(1, Order.Status.Done, Products)
-            }, JSONOrderPath);
-            */
+            
         }
 
         #region Orders Handling
         /// <summary>
-        /// Method that takes a list of objects, and writes them to a JSON file.
+        /// Method that takes an Order Object and writes it to a JSOn file.
         /// </summary>
         /// <param name="objects"></param>
-        public void SaveJSONObjects(List<object> objects, string path)
+        public void SaveOrderJSON(Order order)
         {
+
+            List<object> objects = new List<object>()
+            {
+                order
+            };
+
+            string path = GenerateOrderJSONPath(JSONOrderPath, order);
 
             using (var jsonFileWriter = File.Create(path))
             {
@@ -71,6 +73,17 @@ namespace OrderSmart.Services.JSONService
         }
 
         /// <summary>
+        /// Method that generates the path for the given order.
+        /// </summary>
+        /// <param name="basePath"></param>
+        /// <param name="order"></param>
+        /// <returns>Path to save to.</returns>
+        private string GenerateOrderJSONPath(string basePath, Order order)
+        {
+            return Path.Combine(basePath, "Order_" + order.ID + ".json");
+        }
+
+        /// <summary>
         /// Method that reads Orders from the JSON file, defined in the path-properties above,
         /// and returns the read data, to be parsed into the list.
         /// </summary>
@@ -78,10 +91,20 @@ namespace OrderSmart.Services.JSONService
         private IEnumerable<Order> ReadOrders()
         {
 
-            using (var jsonFileReader = File.OpenText(JSONOrderPath))
+            List<Order> orders = new List<Order>();
+            string[] files = Directory.GetFiles(JSONOrderPath);
+
+            foreach(string file in files)
             {
-                return JsonSerializer.Deserialize<Order[]>(jsonFileReader.ReadToEnd());
+               
+                using (var jsonFileReader = File.OpenText(Path.Combine(JSONOrderPath, file)))
+                {
+                    orders.AddRange(JsonSerializer.Deserialize<Order[]>(jsonFileReader.ReadToEnd()));
+                }
+
             }
+
+            return orders;
 
         }
 

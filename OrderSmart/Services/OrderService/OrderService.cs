@@ -34,8 +34,41 @@ namespace OrderSmart.Services.OrderService
         public void AddOrder(Order order)
         {
             Orders.Add(order);
+            _jsonFileService.SaveOrderJSON(order);
         }
 
+        /// <summary>
+        /// Method that generates an ID for an Order, to ensure each Order has a unique ID.
+        /// No Order can have the ID of 0, if so, it's regarded as not having an ID.
+        /// </summary>
+        /// <returns></returns>
+        public int GenerateID()
+        {
+
+            int ID = 1;
+            bool foundID = false;
+
+            while(!foundID)
+            {
+
+                foreach(Order o in Orders)
+                {
+                    if(o.ID != ID)
+                    {
+
+                        foundID = true;
+
+                    } else
+                    {
+                        ID += 1;
+                    }
+                }
+
+            }
+
+            return ID;
+
+        }
 
         /// <summary>
         /// Method that returns all objects of type Order from the Orders-list.
@@ -70,7 +103,10 @@ namespace OrderSmart.Services.OrderService
         /// <param name="order">The order to update.</param>
         public void UpdateOrder(Order.Status status, Order order)
         {
+
             order.OrderStatus = status;
+            _jsonFileService.SaveOrderJSON(order);
+
         }
 
         /// <summary>

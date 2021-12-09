@@ -163,7 +163,8 @@ namespace OrderSmart.Pages.OrderPlace
 
             if (Cart.Count > 0)
             {
-                Order = new Order(Order.Status.Recieved, Cart); //Forslag: Ændre order parameter så den kun tager en liste af produkter og status bliver sat i body til recieved
+                Order = new Order(Order.Status.Recieved, Cart.ToList()); //Forslag: Ændre order parameter så den kun tager en liste af produkter og status bliver sat i body til recieved
+                Order.GetID(_orderService);
                 _orderService.AddOrder(Order);
             }
             //Falke

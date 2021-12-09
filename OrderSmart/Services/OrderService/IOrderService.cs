@@ -19,6 +19,7 @@ namespace OrderSmart.Services.OrderService
         Order GetOrderByID(int id);
         void UpdateOrder(Order.Status status, Order order);
         void DeleteOrder(Order order);
+        int GenerateID();
 
     }
 }
