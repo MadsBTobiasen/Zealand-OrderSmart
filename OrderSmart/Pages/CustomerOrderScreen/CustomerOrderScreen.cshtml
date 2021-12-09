@@ -10,77 +10,68 @@
     <link rel="stylesheet" href="~/css/CustomerOrderScreen.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <script>
-        //Javascript som opdaterer siden automatisk hvert 15. sekund.
+        /* JavaScript that updates the site automatically every 15 seconds.*/
+        /*Martin*/
         function timedRefresh(timeoutPeriod) {
-            setTimeout("location.reload(true);",timeoutPeriod);
+            setTimeout("location.reload(true);", timeoutPeriod);
         }
         window.onload = timedRefresh(15000);
     </script>
 </head>
 
 <body>
-
-    <table class="table table-borderless">
-        <thead>
-            <tr>
-                <th>
-                    Modtaget
-                </th>
-                <th class="table-warning">
-                    Pakkes
-                </th>
-                <th class="table-success">
-                    Klar
-                </th>
-                @*<th>
+    @* Makes a borderless table and tableheaders for each orderstatus.*@
+    @* Martin *@
+    <form method="get">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th class="table-info">
+                        Modtaget
+                    </th>
+                    <th class="table-warning">
+                        Pakkes
+                    </th>
+                    <th class="table-success">
+                        Klar
+                    </th>
+                    @* <th class="table-primary">
                         Udleveret
-                    </th>*@
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                @* Laver TableCell hvor man itererer igennem alle ordre med ønsket status og laver et nyt row for hver ordre. *@
-                <td>
-                    @foreach (var item in Model.Orders.Where(item => item.OrderStatus == (Order.Status)0))
-                    {
-                        <table clas="table">
-                            <tr>
-                                <a class="btn btn-primary">@item.ID</a>
-                            </tr>
-                        </table>
-                    }
-                </td>
-                <td>
-                    @foreach (var item in Model.Orders.Where(item => item.OrderStatus == (Order.Status)1))
-                    {
-                        <table clas="table">
-                            <tr>
-                                <a class="btn btn-primary">@item.ID</a>
-                            </tr>
-                        </table>
-                    }
-                </td>
-                <td>
-                    @foreach (var item in Model.Orders.Where(item => item.OrderStatus == (Order.Status)2))
-                    {
-                        <table clas="table">
-                            <tr>
-                                <a class="btn btn-primary">@item.ID</a>
-                            </tr>
-                        </table>
-                    }
-                </td>
-                @*<td>
-                        @foreach (var item in Model.Orders.Where(item => item.OrderStatus == (Order.Status)3))
+                        </th>*@
+                </tr>
+            </thead>
+            @* Makes TableCell where it iterates through all orders with the wanted status and makes a new "Badge"(H1) for each order. *@
+            <tbody>
+                <tr>
+                    @* Also Type Casts so OrderStatus is == Order.Stauts
+                        Martin  *@
+                    <td>
+                        @foreach (var item in Model.Orders.Where(item => item.OrderStatus == (Order.Status)0))
                         {
-                            <table clas="table">
-                                <tr>
-                                    <a class="btn btn-primary">@item.ID</a>
-                                </tr>
-                            </table>
+                            <h1><span class="badge badge-info">@item.ID</span></h1>
+
                         }
-                    </td>*@
-            </tr>
-        </tbody>
-    </table>
+                    </td>
+                    <td>
+                        @foreach (var item in Model.Orders.Where(item => item.OrderStatus == (Order.Status)1))
+                        {
+                            <h1><span class="badge badge-warning">@item.ID</span></h1>
+                        }
+                    </td>
+                    <td>
+                        @foreach (var item in Model.Orders.Where(item => item.OrderStatus == (Order.Status)2))
+                        {
+                            <h1><span class="badge badge-success">@item.ID</span></h1>
+                        }
+                    </td>
+                    @*<td>
+                           @foreach (var item in Model.Orders.Where(item => item.OrderStatus == (Order.Status)3))
+                        {
+                            <h1><span class="badge badge-primary">@item.ID</span></h1>
+                        }
+                        </td>*@
+                </tr>
+            </tbody>
+        </table>
+    </form>
 </body>

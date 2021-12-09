@@ -8,10 +8,17 @@ table, th, td, tr {
     width: 100%;
 }
 
+.badge-warning {
+    background-color: #ffeeba !important;
+    color: black !important;
+}
 
-.btn-primary {
-    background-color: white !important;
-    border: black !important;
-    font-size: 30px !important;
-}body {
+.badge-success {
+    background-color: #c3e6cb !important;
+    color: black !important;
+}
+
+.badge-info {
+    background-color: #bee5eb !important;
+    color: black !important;
 }
