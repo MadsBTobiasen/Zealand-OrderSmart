@@ -11,8 +11,8 @@ namespace OrderSmart.Services.ProductService
 
         public List<Product> GetAllProducts();
         public Product GetProductByID(int productId);
-        public List<Product> GetProductsBySearch(string sName, double sMinPrice, double sMaxPrice);
-        public Product UpdateStock(Product product, int amount);
+        public List<Product> GetProductsBySearch(string sName, double sMinPrice, double sMaxPrice); //Edited by Falke
+        public void UpdateStock(List<Product> toUpdate);
 
     }
 }

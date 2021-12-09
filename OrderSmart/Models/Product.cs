@@ -9,7 +9,7 @@ namespace OrderSmart.Models
 {
     public class Product
     {
-
+        
         #region Properties
         public int ID { get; set; }
         public string Name { get; set; }

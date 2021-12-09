@@ -4,38 +4,100 @@
 @{
 }
 
-
+<!--Falke-->
 <body>
+
+    <div>
+        <form method="post" class="form-inline">
+            <input asp-for="SearchName" placeholder="Navn" />
+            <input asp-for="SearchMinPrice" placeholder="Min. pris" />
+            <input asp-for="SearchMaxPrice" placeholder="Max. pris" />
+            <input type="submit" asp-page-handler="Search" value="Søg" />
+        </form>
+    </div>
 
     <div class="table">
 
         <div class="">
 
-            <form method="post" class="">
 
-                @for (int i = 0; i < Model.Stock.Count; i++)
-                {
-                <div class="form-group form-row">
+                <!--Falke-->
+                <table class="table-striped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Navn</th>
+                        <th>Pris</th>
+                        <th>Lager antal</th>
+                        <th>Til kurv</th>
+                        <th>I kurv</th>
+                    </tr>
 
-                    <input asp-for="@Model.Cart[i].ID" value="@Model.Stock[i].ID" readonly="@true" />
 
-                    <input asp-for="@Model.Cart[i].Name" value="@Model.Stock[i].Name" readonly="@true" />
+                    @foreach (Product p in OrderPlace.Stock)
+                    {
+                        if (p.Amount > 0)
+                        {
+                                <tr>
 
-                    <input asp-for="@Model.Cart[i].Price" value="@Model.Stock[i].Price" readonly="@true" />
+                                    <td>@p.ID</td>
 
-                    <p class="form-text">@Model.Stock[i].Amount</p>
-                    <p class="btn-dark" onclick="incrementAmount(@Model.Stock[i].Amount, @i)">+</p>
-                    <p class="btn-dark" onclick="decrementAmount(0, @i)">-</p>
+                                    <td>@p.Name></td>
 
-                    <input asp-for="@Model.Cart[i].Amount" value="0" id="new_amount_div_@i" onchange="checkMax(@Model.Stock[i].Amount, @i)"/>
-                    <!-- VALIDAATION DONE CLIENT SIDE WITH JAVASCRIPT -->
+                                    <td>@p.Price</td>
 
-                </div>
-                }
+                                    <td>@p.Amount</td>
 
-                <input type="submit" value="submit" name="submit" />
+                                    <td>
+                                        <form method="post">
+                                            <input type="hidden" name="id" value="@p.ID" />
+                                            <input type="hidden" name="name" value="@p.Name" />
+                                            <input type="hidden" name="price" value="@p.Price" />
+                                            <input name="amount" value="0" id="new_amount_div_@OrderPlace.Stock.IndexOf(p)" onchange="checkMax(@p.Amount, @OrderPlace.Stock.IndexOf(p))" />
+                                            <p class="btn-dark d-inline" onclick="incrementAmount(@p.Amount, @OrderPlace.Stock.IndexOf(p))">+</p> <!--Addition by Mads-->
+                                            <p class="btn-dark d-inline" onclick="decrementAmount(0, @OrderPlace.Stock.IndexOf(p))">-</p> <!--Addition by Mads-->
+                                            <input asp-page-handler="ToCart" type="submit" value="Tilføj" /> <input asp-page-handler="RemoveFromCart" type="submit" value="Fjern" />
+                                        </form>
+                                    </td>
+                                    <td>
+                                        @if (OrderPlace.Cart != null)
+                                        {
+                                            @foreach (Product cartP in OrderPlace.Cart)
+                                            {
+                                                if (p.ID == cartP.ID)
+                                                {
+                                                    @cartP.Amount
+                                                }
+                                            }
+                                        }
+                                        <!-- VALIDAATION DONE CLIENT SIDE WITH JAVASCRIPT Validation made by Mads -->
+                                    </td>
+                                </tr>
+                        }
+                    }
+                </table>
+            <!--Falke-->
+            <form asp-page-handler="Buy" method="post"><input type="submit" value="Køb" /><label>Total: @Math.Round(OrderPlace.TotalPriceCart, 2)</label></form> 
 
-            </form>
+                <!--Should be Deleted before release but its nice to have when debugging after merge-->
+                <table>
+                    <thead>Test</thead>
+                    <tr>
+                        <th>navn</th>
+                        <th>amount</th>
+                    </tr>
+                    <tbody>
+                        @if (OrderPlace.Cart != null)
+                        {
+                            @foreach (Product p in OrderPlace.Cart)
+                            {
+                                <tr>
+                                    <td>@p.Name</td>
+                                    <td>@p.Amount</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
 
         </div>
 

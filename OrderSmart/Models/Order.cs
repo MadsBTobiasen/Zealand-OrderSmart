@@ -28,9 +28,9 @@ namespace OrderSmart.Models
         public double Price { get { return CalculatePrice(); } }
         public List<Product> Products { get; set; }
         #endregion
-
+        
         #region Constructors
-        public Order(Status orderStatus, List<Product> products)
+        public Order(Status orderStatus, List<Product> products) //Forslag: Ændre order parameter så den kun tager en liste af produkter og status bliver sat i body til recieved
         {
             
             ID = IDCounter;
