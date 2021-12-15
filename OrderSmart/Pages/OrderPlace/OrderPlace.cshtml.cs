@@ -118,7 +118,7 @@ namespace OrderSmart.Pages.OrderPlace
         }
         /// <summary>
         /// Gets called when you press "fjern" by a product. matches ID to product in cart and decreases the amount property by the chosen amount
-        /// (product is removed from list if Amount reaches 0). Also decreases total price of cart by the appropriate amount.
+        /// (product is removed from list if Amount reaches 0). Also recalculates total price of cart.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="amount"></param>
@@ -130,9 +130,13 @@ namespace OrderSmart.Pages.OrderPlace
                 if (id == p.ID)
                 {
                     p.Amount -= amount;
-                    TotalPriceCart -= (p.Price * amount);
                 }
                 if (p.Amount <= 0) Cart.Remove(p);
+            }
+            TotalPriceCart = 0;
+            foreach (Product p in Cart)
+            {
+                TotalPriceCart += (p.Price * p.Amount);
             }
             return Page();
         }
@@ -143,7 +147,15 @@ namespace OrderSmart.Pages.OrderPlace
         /// </summary>
         public IActionResult OnPostSearch()
         {
-            Stock = _productService.GetProductsBySearch(SearchName, Convert.ToDouble(SearchMinPrice), Convert.ToDouble(SearchMaxPrice));
+            try
+            {
+                Stock = _productService.GetProductsBySearch(SearchName, Convert.ToDouble(SearchMinPrice), Convert.ToDouble(SearchMaxPrice));
+            }
+            catch
+            {
+                Stock = _productService.GetProductsBySearch(SearchName, 0, 0);
+            }
+            
             return Page();
         }
         #endregion
