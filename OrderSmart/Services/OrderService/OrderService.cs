@@ -51,6 +51,11 @@ namespace OrderSmart.Services.OrderService
             while(!foundID)
             {
 
+                if(Orders.Count == 0)
+                {
+                    foundID = true;
+                }
+
                 foreach(Order o in Orders)
                 {
                     if(o.ID != ID)

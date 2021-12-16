@@ -1,32 +1,122 @@
 [
   {
     "ID": 1,
-    "Name": "kort_1",
-    "Amount": 2,
-    "Price": 10.00
+    "Name": "Counterspell",
+    "Amount": 13,
+    "Price": 0.33
   },
   {
     "ID": 2,
-    "Name": "kort_2",
-    "Amount": 19,
-    "Price": 0.80
+    "Name": "Hallowed Fountain",
+    "Amount": 9,
+    "Price": 17.10
   },
   {
     "ID": 3,
-    "Name": "kort_3",
-    "Amount": 1,
-    "Price": 1.30
+    "Name": "Blood Crypt",
+    "Amount": 18,
+    "Price": 16.30
   },
   {
     "ID": 4,
-    "Name": "kort_4",
-    "Amount": 3,
-    "Price": 5.69
+    "Name": "Swords to Plowshares",
+    "Amount": 19,
+    "Price": 1.21
   },
   {
     "ID": 5,
-    "Name": "kort_5",
-    "Amount": 9,
-    "Price": 4.20
+    "Name": "Path to Exile",
+    "Amount": 18,
+    "Price": 1.10
+  },
+  {
+    "ID": 6,
+    "Name": "Pact of Negation",
+    "Amount": 11,
+    "Price": 9.89
+  },
+  {
+    "ID": 7,
+    "Name": "Asmoranomardicadaistinaculdacar",
+    "Amount": 7,
+    "Price": 0.39
+  },
+  {
+    "ID": 8,
+    "Name": "Tiamat",
+    "Amount": 11,
+    "Price": 7.99
+  },
+  {
+    "ID": 9,
+    "Name": "Gaeas Cradle",
+    "Amount": 2,
+    "Price": 599.99
+  },
+  {
+    "ID": 10,
+    "Name": "Grim Monolith",
+    "Amount": 3,
+    "Price": 219.99
+  },
+  {
+    "ID": 11,
+    "Name": "Veil of Summer",
+    "Amount": 4,
+    "Price": 21.99
+  },
+  {
+    "ID": 12,
+    "Name": "Academy Rector",
+    "Amount": 2,
+    "Price": 121.99
+  },
+  {
+    "ID": 13,
+    "Name": "Mother of Runes",
+    "Amount": 4,
+    "Price": 19.99
+  },
+  {
+    "ID": 14,
+    "Name": "Sol Ring",
+    "Amount": 19,
+    "Price": 2.25
+  },
+  {
+    "ID": 15,
+    "Name": "Osgir, the Reconstructor",
+    "Amount": 8,
+    "Price": 1.11
+  },
+  {
+    "ID": 16,
+    "Name": "Island",
+    "Amount": 20,
+    "Price": 0.29
+  },
+  {
+    "ID": 17,
+    "Name": "Plains",
+    "Amount": 20,
+    "Price": 0.29
+  },
+  {
+    "ID": 18,
+    "Name": "Forest",
+    "Amount": 20,
+    "Price": 0.29
+  },
+  {
+    "ID": 19,
+    "Name": "Mountain",
+    "Amount": 20,
+    "Price": 0.29
+  },
+  {
+    "ID": 20,
+    "Name": "Swamp",
+    "Amount": 20,
+    "Price": 0.29
   }
 ]
