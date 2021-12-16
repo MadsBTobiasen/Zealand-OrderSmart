@@ -1,0 +1,15 @@
+[
+  {
+    "ID": 1,
+    "OrderStatus": 0,
+    "Price": 121.99,
+    "Products": [
+      {
+        "ID": 12,
+        "Name": "Academy Rector",
+        "Amount": 1,
+        "Price": 121.99
+      }
+    ]
+  }
+]
